@@ -50,7 +50,9 @@ TEST_F(TimedDoorTest, ThrowStateNoThrowWhenClosed) {
 }
 
 TEST_F(TimedDoorTest, ThrowStateThrowsWhenOpen) {
-  try { door->unlock(); } catch (const std::runtime_error&) {}
+  try {
+    door->unlock();
+  } catch (const std::runtime_error&) {}
   EXPECT_THROW(door->throwState(), std::runtime_error);
 }
 
@@ -64,7 +66,9 @@ TEST_F(TimedDoorTest, DoorIsOpenAfterUnlockThrows) {
 }
 
 TEST_F(TimedDoorTest, AdapterTimeoutThrowsWhenOpen) {
-  try { door->unlock(); } catch (const std::runtime_error&) {}
+  try {
+    door->unlock();
+  } catch (const std::runtime_error&) {}
   DoorTimerAdapter adapter(*door);
   EXPECT_THROW(adapter.Timeout(), std::runtime_error);
 }
